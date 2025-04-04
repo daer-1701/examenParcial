@@ -6,7 +6,38 @@
     <title>Lista De Heroes</title>
 </head>
 <body>
+    <div id="datosHeroes">
+      <h1>Heroes Registrados</h1>
+    </div>
+    <script>
+        fetch('js/heroes.json')
+            .then(response => response.json())
+            .then(data => {
+                let heroes = data.Hero; //todos los heroes
+                let contenedor = document.getElementById('datosHeroes');
+                for(let i=0;i<heroes.length;i++){
+                    let heroe = heroes[i];
+                    let divHeroe = document.createElement('div'); //crear el div del heroe
+                    divHeroe.classList.add('heroe');
+                    const imagen = heroe.foto
+                    divHeroe.innerHTML = `
+                                    <h3>${heroe.nombre}</h3>
+                                    <img src="imagen" alt="super">${heroe.foto}</img>
+                                    <p><strong>Liga:</strong> ${heroe.liga}</p>
+                                    <p><strong>Nivel Poder:</strong> ${heroe.nivelPoder}</p>
+                                    <p><strong>Poderes:</strong></p>`;
+                    for(let i=0;i<heroe.poderes.length;i++)
+                    {
+                        divHeroe.innerHTML += `
+                                    
+                                    <p>${heroe.poderes[i]}</p>
+                                `; 
+                    }                   
+                    contenedor.appendChild(divHeroe);
+                }
 
+            })
+            .catch(error => console.error('Error de carga'), error);
     </script>
 </body>
 </html>
