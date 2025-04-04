@@ -19,10 +19,9 @@
                     let heroe = heroes[i];
                     let divHeroe = document.createElement('div'); //crear el div del heroe
                     divHeroe.classList.add('heroe');
-                    const imagen = heroe.foto
                     divHeroe.innerHTML = `
                                     <h3>${heroe.nombre}</h3>
-                                    <img src="imagen" alt="super">${heroe.foto}</img>
+                                    <img src="${heroe.foto}" alt="super"></img>
                                     <p><strong>Liga:</strong> ${heroe.liga}</p>
                                     <p><strong>Nivel Poder:</strong> ${heroe.nivelPoder}</p>
                                     <p><strong>Poderes:</strong></p>`;
